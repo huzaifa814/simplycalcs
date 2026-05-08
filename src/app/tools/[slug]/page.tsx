@@ -8,6 +8,11 @@ import { LoanCalculator } from '@/components/tools/LoanCalculator';
 import { BMICalculator } from '@/components/tools/BMICalculator';
 import { TipCalculator } from '@/components/tools/TipCalculator';
 import { PercentageCalculator } from '@/components/tools/PercentageCalculator';
+import { AutoLoanCalculator } from '@/components/tools/AutoLoanCalculator';
+import { PaycheckCalculator } from '@/components/tools/PaycheckCalculator';
+import { CalorieCalculator } from '@/components/tools/CalorieCalculator';
+import { CompoundInterestCalculator } from '@/components/tools/CompoundInterestCalculator';
+import { GPACalculator } from '@/components/tools/GPACalculator';
 import { ComingSoon } from '@/components/tools/ComingSoon';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -62,6 +67,11 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         {slug === 'bmi-calculator' && <BMICalculator />}
         {slug === 'tip-calculator' && <TipCalculator />}
         {slug === 'percentage-calculator' && <PercentageCalculator />}
+        {slug === 'auto-loan-calculator' && <AutoLoanCalculator />}
+        {slug === 'paycheck-calculator' && <PaycheckCalculator />}
+        {slug === 'calorie-calculator' && <CalorieCalculator />}
+        {slug === 'compound-interest-calculator' && <CompoundInterestCalculator />}
+        {slug === 'gpa-calculator' && <GPACalculator />}
         {!tool.available && <ComingSoon toolTitle={tool.title} />}
       </main>
       <Footer />
