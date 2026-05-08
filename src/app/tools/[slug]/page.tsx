@@ -13,6 +13,14 @@ import { PaycheckCalculator } from '@/components/tools/PaycheckCalculator';
 import { CalorieCalculator } from '@/components/tools/CalorieCalculator';
 import { CompoundInterestCalculator } from '@/components/tools/CompoundInterestCalculator';
 import { GPACalculator } from '@/components/tools/GPACalculator';
+import { RetirementCalculator } from '@/components/tools/RetirementCalculator';
+import { SavingsCalculator } from '@/components/tools/SavingsCalculator';
+import { PaceCalculator } from '@/components/tools/PaceCalculator';
+import { PregnancyCalculator } from '@/components/tools/PregnancyCalculator';
+import { FractionCalculator } from '@/components/tools/FractionCalculator';
+import { TimeCalculator } from '@/components/tools/TimeCalculator';
+import { DateCalculator } from '@/components/tools/DateCalculator';
+import { SalesTaxCalculator } from '@/components/tools/SalesTaxCalculator';
 import { ComingSoon } from '@/components/tools/ComingSoon';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -72,6 +80,14 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         {slug === 'calorie-calculator' && <CalorieCalculator />}
         {slug === 'compound-interest-calculator' && <CompoundInterestCalculator />}
         {slug === 'gpa-calculator' && <GPACalculator />}
+        {slug === 'retirement-calculator' && <RetirementCalculator />}
+        {slug === 'savings-calculator' && <SavingsCalculator />}
+        {slug === 'pace-calculator' && <PaceCalculator />}
+        {slug === 'pregnancy-calculator' && <PregnancyCalculator />}
+        {slug === 'fraction-calculator' && <FractionCalculator />}
+        {slug === 'time-calculator' && <TimeCalculator />}
+        {slug === 'date-calculator' && <DateCalculator />}
+        {slug === 'sales-tax-calculator' && <SalesTaxCalculator />}
         {!tool.available && <ComingSoon toolTitle={tool.title} />}
       </main>
       <Footer />
