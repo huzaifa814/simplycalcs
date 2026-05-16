@@ -22,6 +22,9 @@ import { TimeCalculator } from '@/components/tools/TimeCalculator';
 import { TimeCardCalculator } from '@/components/tools/TimeCardCalculator';
 import { DateCalculator } from '@/components/tools/DateCalculator';
 import { SalesTaxCalculator } from '@/components/tools/SalesTaxCalculator';
+import { DebtPayoffCalculator } from '@/components/tools/DebtPayoffCalculator';
+import { SalaryCalculator } from '@/components/tools/SalaryCalculator';
+import { AgeCalculator } from '@/components/tools/AgeCalculator';
 import { ComingSoon } from '@/components/tools/ComingSoon';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -90,6 +93,9 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         {slug === 'time-card-calculator' && <TimeCardCalculator />}
         {slug === 'date-calculator' && <DateCalculator />}
         {slug === 'sales-tax-calculator' && <SalesTaxCalculator />}
+        {slug === 'debt-payoff-calculator' && <DebtPayoffCalculator />}
+        {slug === 'salary-calculator' && <SalaryCalculator />}
+        {slug === 'age-calculator' && <AgeCalculator />}
         {!tool.available && <ComingSoon toolTitle={tool.title} />}
       </main>
       <Footer />

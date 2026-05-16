@@ -15,6 +15,8 @@ export const tools: Tool[] = [
   { slug: 'compound-interest-calculator', title: 'Compound Interest', description: 'See how compound interest grows savings over time.', icon: '📈', category: 'finance', available: true },
   { slug: 'retirement-calculator', title: 'Retirement Calculator', description: 'Project savings growth and retirement income with custom contributions.', icon: '🌅', category: 'finance', available: true },
   { slug: 'savings-calculator', title: 'Savings Calculator', description: 'How long until you reach your savings goal?', icon: '🐷', category: 'finance', available: true },
+  { slug: 'debt-payoff-calculator', title: 'Debt Payoff Calculator', description: 'Snowball vs avalanche: see how fast you can be debt-free and how much interest you save.', icon: '❄️', category: 'finance', available: true },
+  { slug: 'salary-calculator', title: 'Salary Calculator', description: 'Convert hourly, daily, weekly, biweekly, monthly, and annual pay. Adjusts for holidays and vacation.', icon: '💼', category: 'finance', available: true },
   { slug: 'bmi-calculator', title: 'BMI Calculator', description: 'Body Mass Index from height and weight. Imperial or metric.', icon: '⚖️', category: 'health', available: true },
   { slug: 'calorie-calculator', title: 'Calorie Calculator', description: 'Daily calorie needs based on age, activity, and goals.', icon: '🍎', category: 'health', available: true },
   { slug: 'pace-calculator', title: 'Pace Calculator', description: 'Running pace, distance, and time. For 5K through marathon.', icon: '🏃', category: 'health', available: true },
@@ -27,6 +29,7 @@ export const tools: Tool[] = [
   { slug: 'time-card-calculator', title: 'Time Card Calculator', description: 'Weekly timesheet: enter start/end times and breaks, get daily + weekly hours and pay. Overtime included.', icon: '⏱️', category: 'everyday', available: true },
   { slug: 'date-calculator', title: 'Date Calculator', description: 'Days between dates, add days to a date, age in days.', icon: '📅', category: 'everyday', available: true },
   { slug: 'sales-tax-calculator', title: 'Sales Tax Calculator', description: 'Sales tax for any US state and zip code.', icon: '🧾', category: 'everyday', available: true },
+  { slug: 'age-calculator', title: 'Age Calculator', description: 'Exact age in years, months, days, hours, and minutes. Shows next birthday too.', icon: '🎂', category: 'everyday', available: true },
 ];
 
 export const getTool = (slug: string) => tools.find(t => t.slug === slug);
