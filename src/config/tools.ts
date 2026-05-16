@@ -24,6 +24,7 @@ export const tools: Tool[] = [
   { slug: 'gpa-calculator', title: 'GPA Calculator', description: 'Calculate GPA from grades. 4.0 scale with weighted options.', icon: '🎓', category: 'math', available: true },
   { slug: 'tip-calculator', title: 'Tip Calculator', description: 'Quick tip + bill split for restaurants, taxis, and group bills.', icon: '🍽️', category: 'everyday', available: true },
   { slug: 'time-calculator', title: 'Time Calculator', description: 'Add or subtract hours, minutes, seconds. Time differences.', icon: '⏰', category: 'everyday', available: true },
+  { slug: 'time-card-calculator', title: 'Time Card Calculator', description: 'Weekly timesheet: enter start/end times and breaks, get daily + weekly hours and pay. Overtime included.', icon: '⏱️', category: 'everyday', available: true },
   { slug: 'date-calculator', title: 'Date Calculator', description: 'Days between dates, add days to a date, age in days.', icon: '📅', category: 'everyday', available: true },
   { slug: 'sales-tax-calculator', title: 'Sales Tax Calculator', description: 'Sales tax for any US state and zip code.', icon: '🧾', category: 'everyday', available: true },
 ];
