@@ -19,6 +19,7 @@ import { PaceCalculator } from '@/components/tools/PaceCalculator';
 import { PregnancyCalculator } from '@/components/tools/PregnancyCalculator';
 import { FractionCalculator } from '@/components/tools/FractionCalculator';
 import { TimeCalculator } from '@/components/tools/TimeCalculator';
+import { TimeCardCalculator } from '@/components/tools/TimeCardCalculator';
 import { DateCalculator } from '@/components/tools/DateCalculator';
 import { SalesTaxCalculator } from '@/components/tools/SalesTaxCalculator';
 import { ComingSoon } from '@/components/tools/ComingSoon';
@@ -86,6 +87,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
         {slug === 'pregnancy-calculator' && <PregnancyCalculator />}
         {slug === 'fraction-calculator' && <FractionCalculator />}
         {slug === 'time-calculator' && <TimeCalculator />}
+        {slug === 'time-card-calculator' && <TimeCardCalculator />}
         {slug === 'date-calculator' && <DateCalculator />}
         {slug === 'sales-tax-calculator' && <SalesTaxCalculator />}
         {!tool.available && <ComingSoon toolTitle={tool.title} />}
