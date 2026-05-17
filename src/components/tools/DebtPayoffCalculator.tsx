@@ -14,7 +14,7 @@ function uid() { return Math.random().toString(36).slice(2, 9); }
 
 function simulate(debts: Debt[], extra: number, strategy: 'snowball' | 'avalanche') {
   const list = debts.map((d) => ({ ...d })).filter((d) => d.balance > 0);
-  if (list.length === 0) return { months: 0, totalInterest: 0, schedule: [] as { name: string; payoffMonth: number }[] };
+  if (list.length === 0) return { months: 0, totalInterest: 0, schedule: [] as { name: string; payoffMonth: number }[], neverPaysOff: false };
 
   let month = 0;
   let totalInterest = 0;
@@ -55,7 +55,8 @@ function simulate(debts: Debt[], extra: number, strategy: 'snowball' | 'avalanch
     }
   }
 
-  return { months: month, totalInterest, schedule };
+  const neverPaysOff = list.some((d) => d.balance > 0.005);
+  return { months: month, totalInterest, schedule, neverPaysOff };
 }
 
 const money = (n: number) => '$' + n.toLocaleString('en-US', { maximumFractionDigits: 0 });
@@ -113,28 +114,36 @@ export function DebtPayoffCalculator() {
         </div>
       </div>
 
-      <div className="p-8 rounded-2xl bg-gradient-to-br from-blue-500/10 to-indigo-500/10 border border-blue-500/20">
-        <div className="grid gap-6 md:grid-cols-3">
-          <div>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Debt-free in</p>
-            <p className="text-4xl font-bold" style={{ color: '#3b82f6' }}>{Math.floor(result.months / 12)}y {result.months % 12}m</p>
-          </div>
-          <div>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total interest</p>
-            <p className="text-4xl font-bold" style={{ color: '#3b82f6' }}>{money(result.totalInterest)}</p>
-          </div>
-          <div>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total paid</p>
-            <p className="text-4xl font-bold" style={{ color: '#3b82f6' }}>{money(totalBalance + result.totalInterest)}</p>
-          </div>
+      {result.neverPaysOff ? (
+        <div className="p-8 rounded-2xl bg-gradient-to-br from-red-500/10 to-orange-500/10 border border-red-500/20">
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Debt-free in</p>
+          <p className="text-4xl font-bold mb-2" style={{ color: '#dc2626' }}>Never</p>
+          <p className="text-sm text-gray-700 dark:text-gray-300">Your minimums plus extra payment don&apos;t cover monthly interest. Increase the extra payment or raise the minimums to start paying down the balance.</p>
         </div>
-        {compare.months > 0 && (
-          <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
-            Other strategy ({strategy === 'snowball' ? 'avalanche' : 'snowball'}): {Math.floor(compare.months / 12)}y {compare.months % 12}m, {money(compare.totalInterest)} interest
-            {compare.totalInterest < result.totalInterest && ` — saves ${money(result.totalInterest - compare.totalInterest)}`}
-          </p>
-        )}
-      </div>
+      ) : (
+        <div className="p-8 rounded-2xl bg-gradient-to-br from-blue-500/10 to-indigo-500/10 border border-blue-500/20">
+          <div className="grid gap-6 md:grid-cols-3">
+            <div>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Debt-free in</p>
+              <p className="text-4xl font-bold" style={{ color: '#3b82f6' }}>{Math.floor(result.months / 12)}y {result.months % 12}m</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total interest</p>
+              <p className="text-4xl font-bold" style={{ color: '#3b82f6' }}>{money(result.totalInterest)}</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total paid</p>
+              <p className="text-4xl font-bold" style={{ color: '#3b82f6' }}>{money(totalBalance + result.totalInterest)}</p>
+            </div>
+          </div>
+          {compare.months > 0 && !compare.neverPaysOff && (
+            <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+              Other strategy ({strategy === 'snowball' ? 'avalanche' : 'snowball'}): {Math.floor(compare.months / 12)}y {compare.months % 12}m, {money(compare.totalInterest)} interest
+              {compare.totalInterest < result.totalInterest && ` — saves ${money(result.totalInterest - compare.totalInterest)}`}
+            </p>
+          )}
+        </div>
+      )}
 
       {result.schedule.length > 0 && (
         <div className="p-6 rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900">

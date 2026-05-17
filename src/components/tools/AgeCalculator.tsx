@@ -76,7 +76,7 @@ export function AgeCalculator() {
           <div className="p-6 rounded-2xl border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900">
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Next birthday</p>
             <p className="text-xl font-semibold">{result.bday.date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
-            <p className="text-sm text-gray-500 mt-1">In {result.bday.days} day{result.bday.days === 1 ? '' : 's'}</p>
+            <p className="text-sm text-gray-500 mt-1">{result.bday.days === 0 ? '🎉 Happy birthday — today!' : `In ${result.bday.days} day${result.bday.days === 1 ? '' : 's'}`}</p>
           </div>
         </>
       ) : (
